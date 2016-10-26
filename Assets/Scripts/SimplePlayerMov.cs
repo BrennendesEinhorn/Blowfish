@@ -10,15 +10,19 @@ public class SimplePlayerMov : MonoBehaviour {
     private Rigidbody rBody;
 
     public float maxZAccelerationFractionPerSecond = 0.5f;
-    public float minSpeedZ = 2;
+    public float minSpeedZ = 10;
     public float maxSpeedZ = 20;
     public float minSpeedX = 0;
     public float pressTimeForMaxSpeedX = 1f;
     public float maxSpeedX = 20;
 
 
+    public float speedUp = 3;
+    public float slowDown = 2;
 
-   
+
+
+
 
 
 
@@ -66,7 +70,13 @@ public class SimplePlayerMov : MonoBehaviour {
         if (other.gameObject.CompareTag("SpeedUp"))
         {
             other.gameObject.SetActive(false);
-            maxSpeedZ += 3;
+            maxSpeedZ += speedUp;
+        }else if(other.gameObject.CompareTag("SlowDown"))
+        {
+            if(maxSpeedZ > minSpeedZ)
+            {
+                maxSpeedZ -= slowDown;
+            }
         }
     }
 

@@ -16,12 +16,12 @@ public class SimpleUI : MonoBehaviour {
     void Start () {
         rBody = GetComponent<Rigidbody>();
 
-        //GameManager.Instance.
+        
     }
 
     private void updateSpeedText()
     {
-        topLeftText.text = "Speed: " + rBody.velocity.x+ "\nmoveXInput: " + Input.GetAxis("Horizontal");
+        topLeftText.text = "Speed: " + System.Math.Round(rBody.velocity.z, 2) + "\nTarget Speed: " + GameManager.Instance.Player.maxSpeedZ ; 
     }
 
 
