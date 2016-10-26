@@ -11,10 +11,10 @@ public class SimplePlayerMov : MonoBehaviour {
 
     public float maxZAccelerationFractionPerSecond = 0.5f;
     public float minSpeedZ = 2;
-    public float maxSpeedZ = 5;
+    public float maxSpeedZ = 20;
     public float minSpeedX = 0;
     public float pressTimeForMaxSpeedX = 1f;
-    public float maxSpeedX = 50;
+    public float maxSpeedX = 20;
 
 
 
@@ -53,7 +53,7 @@ public class SimplePlayerMov : MonoBehaviour {
 
         if(rBody.velocity.y < -0.5f && rBody.velocity.y > -10)
         {
-            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y - 50 * Time.deltaTime, rBody.velocity.z);
+            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y - 80 * Time.deltaTime, rBody.velocity.z);
         }
 
 

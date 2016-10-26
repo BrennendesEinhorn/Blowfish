@@ -627,7 +627,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1097449745
 MonoBehaviour:
@@ -676,7 +676,7 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1097449743}
-  m_Material: {fileID: 13400000, guid: dbf0d3f1f1dcccc4f8707838922a4f19, type: 2}
+  m_Material: {fileID: 13400000, guid: 13f626ff8ab6e934caa1b34b673de0ce, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -699,8 +699,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1144934606}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!114 &1097449750
@@ -717,7 +716,7 @@ MonoBehaviour:
   maxZAccelerationFractionPerSecond: 0.5
   minSpeedZ: 2
   maxSpeedZ: 20
-  minSpeedX: 100
+  minSpeedX: 0
   pressTimeForMaxSpeedX: 1
   maxSpeedX: 20
 --- !u!1 &1144934601
@@ -733,6 +732,7 @@ GameObject:
   - 124: {fileID: 1144934603}
   - 81: {fileID: 1144934602}
   - 143: {fileID: 1144934609}
+  - 114: {fileID: 1144934607}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -802,12 +802,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1144934601}
   m_LocalRotation: {x: 0.19936788, y: -0, z: -0, w: 0.97992474}
-  m_LocalPosition: {x: 0, y: 4, z: -10}
+  m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 23, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1097449749}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+--- !u!114 &1144934607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1144934601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eea028886bad64f87e4b595c70e005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1097449743}
 --- !u!143 &1144934609
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1228,7 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579c12682fe75e644acf30307d23ac0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1097449750}
+  Player: {fileID: 0}
 --- !u!4 &2028207828
 Transform:
   m_ObjectHideFlags: 0
