@@ -10,10 +10,15 @@ public class SimplePlayerMov : MonoBehaviour {
     private Rigidbody rBody;
 
     public float maxZAccelerationFractionPerSecond = 0.5f;
+    public float minSpeedZ = 2;
     public float maxSpeedZ = 5;
     public float minSpeedX = 0;
     public float pressTimeForMaxSpeedX = 1f;
     public float maxSpeedX = 50;
+
+
+
+   
 
 
 
@@ -53,6 +58,16 @@ public class SimplePlayerMov : MonoBehaviour {
 
 
 
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("SpeedUp"))
+        {
+            other.gameObject.SetActive(false);
+            maxSpeedZ += 3;
+        }
     }
 
     private IEnumerator SlowdownX()

@@ -10,11 +10,13 @@ public class SimpleUI : MonoBehaviour {
 
 
 
+
+
     // Use this for initialization
     void Start () {
         rBody = GetComponent<Rigidbody>();
 
-
+        //GameManager.Instance.
     }
 
     private void updateSpeedText()
