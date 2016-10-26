@@ -13,7 +13,7 @@ public class SimplePlayerMov : MonoBehaviour {
     public float maxXAccelerationFractionPerSecond = 1.2f;
 
     public float minSpeedZ = 10;
-    public float maxSpeedZ = 20;
+    public float maxSpeedZ = 15;
     public float minSpeedX = 0;
     public float pressTimeForMaxSpeedX = 1f;
     public float maxSpeedX = 20;
@@ -57,10 +57,10 @@ public class SimplePlayerMov : MonoBehaviour {
             rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y, rBody.velocity.z + maxSpeedZ * Time.deltaTime * maxZAccelerationFractionPerSecond);
         }
 
-        if(rBody.velocity.y < -0.5f && rBody.velocity.y > -10)
-        {
-            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y - 100 * Time.deltaTime, rBody.velocity.z);
-        }
+        //if(rBody.velocity.y < -0.5f && rBody.velocity.y > -10)
+        //{
+        //    rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y - 100 * Time.deltaTime, rBody.velocity.z);
+        //}
 
         if (Input.GetButton("Jump"))
         {

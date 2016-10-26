@@ -5426,7 +5426,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e927531b3c773ab48892b73368e37993, type: 2}
+  - {fileID: 2100000, guid: c543d63d79cf2774b81155ff4a13cb3a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -5467,10 +5467,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1097449743}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalRotation: {x: -0.1927878, y: 0.6552293, z: -0.20606364, w: 0.7007463}
+  m_LocalPosition: {x: 0.0000000022637288, y: -0.8, z: -0.000000033823657}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.009000001, y: 86.268005, z: -32.912003}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5488,7 +5488,7 @@ MonoBehaviour:
   maxZAccelerationFractionPerSecond: 0.5
   maxXAccelerationFractionPerSecond: 1.2
   minSpeedZ: 10
-  maxSpeedZ: 20
+  maxSpeedZ: 15
   minSpeedX: 0
   pressTimeForMaxSpeedX: 1
   maxSpeedX: 20
