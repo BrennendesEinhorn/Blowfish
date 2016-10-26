@@ -5486,13 +5486,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxZAccelerationFractionPerSecond: 0.5
-  minSpeedZ: 2
+  maxXAccelerationFractionPerSecond: 1.2
+  minSpeedZ: 10
   maxSpeedZ: 20
   minSpeedX: 0
   pressTimeForMaxSpeedX: 1
   maxSpeedX: 20
   speedUp: 3
-  slowDown: 3
+  slowDown: 2
 --- !u!1001 &1098874181
 Prefab:
   m_ObjectHideFlags: 0

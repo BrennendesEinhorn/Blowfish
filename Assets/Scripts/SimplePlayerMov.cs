@@ -10,6 +10,8 @@ public class SimplePlayerMov : MonoBehaviour {
     private Rigidbody rBody;
 
     public float maxZAccelerationFractionPerSecond = 0.5f;
+    public float maxXAccelerationFractionPerSecond = 1.2f;
+
     public float minSpeedZ = 10;
     public float maxSpeedZ = 20;
     public float minSpeedX = 0;
@@ -44,7 +46,7 @@ public class SimplePlayerMov : MonoBehaviour {
         float inX = Input.GetAxis("Horizontal");
         if (inX != 0)
         {
-            float moveXRaw = Mathf.Sign(inX) * maxSpeedX * Time.deltaTime + rBody.velocity.x;
+            float moveXRaw = Mathf.Sign(inX) * maxSpeedX * Time.deltaTime * maxXAccelerationFractionPerSecond + rBody.velocity.x ;
             float moveX = Mathf.Clamp(moveXRaw, -maxSpeedX, maxSpeedX);
 
             rBody.velocity = new Vector3( moveX , rBody.velocity.y, rBody.velocity.z);
@@ -57,10 +59,13 @@ public class SimplePlayerMov : MonoBehaviour {
 
         if(rBody.velocity.y < -0.5f && rBody.velocity.y > -10)
         {
-            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y - 80 * Time.deltaTime, rBody.velocity.z);
+            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y - 100 * Time.deltaTime, rBody.velocity.z);
         }
 
-
+        if (Input.GetButton("Jump"))
+        {
+            playerJump();
+        }
 
     }
 
@@ -77,6 +82,22 @@ public class SimplePlayerMov : MonoBehaviour {
             {
                 maxSpeedZ -= slowDown;
             }
+        }
+    }
+
+
+
+    void playerJump()
+    {
+
+        const float JumpForce = 3.5f;
+
+        Vector3 rayOrigin = GetComponent<Collider>().bounds.center;
+
+        float rayDistance = GetComponent<Collider>().bounds.extents.y + 0.1f;
+        if (Physics.Raycast(rayOrigin, Vector3.down, rayDistance))
+        {
+            rBody.AddForce(Vector3.up * JumpForce, ForceMode.VelocityChange);
         }
     }
 
