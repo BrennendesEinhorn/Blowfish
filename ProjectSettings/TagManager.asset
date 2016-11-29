@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - SlowDown
+  - SpeedUp
+  - CameraDirection
   layers:
   - Default
   - TransparentFX
