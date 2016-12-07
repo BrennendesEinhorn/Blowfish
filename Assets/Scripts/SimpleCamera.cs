@@ -37,7 +37,7 @@ public class SimpleCamera : MonoBehaviour
 
             Debug.Log("collision with camStop");
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(0);
 
         }
     }
