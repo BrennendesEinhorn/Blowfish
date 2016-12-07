@@ -19,8 +19,8 @@ public class SimplePlayerMov : MonoBehaviour {
     public float maxSpeedX = 20;
 
 
-    public float speedUp = 3;
-    public float slowDown = 2;
+    public float speedUp = 2;
+    public float slowDown = 1;
 
 
 
@@ -76,13 +76,17 @@ public class SimplePlayerMov : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
             maxSpeedZ += speedUp;
-        }else if(other.gameObject.CompareTag("SlowDown"))
+        } else if (other.gameObject.CompareTag("SlowDown"))
         {
-            if(maxSpeedZ > minSpeedZ)
+            if (maxSpeedZ > minSpeedZ)
             {
                 maxSpeedZ -= slowDown;
             }
+        } else if (other.gameObject.CompareTag("grube"))
+        {
+            transform.position = new Vector3(other.transform.position.x, 43.5f, other.transform.position.z - 40);
         }
+
     }
 
 
