@@ -10,6 +10,7 @@ TagManager:
   - gameEnd
   - grube
   - finish
+  - wall
   layers:
   - Default
   - TransparentFX

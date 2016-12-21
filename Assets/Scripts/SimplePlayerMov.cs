@@ -12,8 +12,9 @@ public class SimplePlayerMov : MonoBehaviour {
     public float maxZAccelerationFractionPerSecond = 0.5f;
     public float maxXAccelerationFractionPerSecond = 1.2f;
 
-    public float minSpeedZ = 10;
-    public float maxSpeedZ = 15;
+    public float minSpeedZ = 15;
+    public float maxSpeedZ = 17;
+    public float maxZLimit = 30;
     public float minSpeedX = 0;
     public float pressTimeForMaxSpeedX = 1f;
     public float maxSpeedX = 20;
@@ -22,9 +23,12 @@ public class SimplePlayerMov : MonoBehaviour {
     public float speedUp = 2;
     public float slowDown = 1;
 
+    public Vector3 direction = new Vector3();
+
+    public float distanceTraveled = 0f;
 
 
-
+    private bool grounded = true;
 
 
 
@@ -42,6 +46,7 @@ public class SimplePlayerMov : MonoBehaviour {
     {
 
         
+        
 
         float inX = Input.GetAxis("Horizontal");
         if (inX != 0)
@@ -57,15 +62,40 @@ public class SimplePlayerMov : MonoBehaviour {
             rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y, rBody.velocity.z + maxSpeedZ * Time.deltaTime * maxZAccelerationFractionPerSecond);
         }
 
-        //if(rBody.velocity.y < -0.5f && rBody.velocity.y > -10)
-        //{
-        //    rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y - 100 * Time.deltaTime, rBody.velocity.z);
-        //}
+        
+
+        if(!grounded)
+        {
+            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y - 10 * Time.deltaTime, rBody.velocity.z);
+        }
 
         if (Input.GetButton("Jump"))
         {
             playerJump();
         }
+
+        //float mag = new Vector2(rBody.velocity.x, rBody.velocity.z).magnitude; 
+
+        //rBody.velocity = new Vector3(direction.x * mag, rBody.velocity.y, direction.z * mag)  ;
+
+        //rBody.transform.forward = new Vector3(direction.x, 0, direction.z);
+
+        distanceTraveled += rBody.velocity.z * Time.fixedDeltaTime;
+
+        Debug.Log("Distance: " + distanceTraveled);
+         
+        Vector3 rayOrigin = GetComponent<Collider>().bounds.center;
+
+        float rayDistance = GetComponent<Collider>().bounds.extents.y + 0.1f;
+        if (Physics.Raycast(rayOrigin, Vector3.down, rayDistance))
+        {
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+
 
     }
 
@@ -75,20 +105,30 @@ public class SimplePlayerMov : MonoBehaviour {
         if (other.gameObject.CompareTag("SpeedUp"))
         {
             other.gameObject.SetActive(false);
-            maxSpeedZ += speedUp;
+            if(maxSpeedZ <= maxZLimit)
+            {
+                maxSpeedZ += speedUp;
+            }
         } else if (other.gameObject.CompareTag("SlowDown"))
         {
             if (maxSpeedZ > minSpeedZ)
             {
-                maxSpeedZ -= slowDown;
+                maxSpeedZ -= slowDown; 
             }
+            other.gameObject.SetActive(false);
+            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y, -5);
+
         } else if (other.gameObject.CompareTag("grube"))
         {
-            transform.position = new Vector3(other.transform.position.x, 43.5f, other.transform.position.z - 40);
+            transform.position = new Vector3(other.transform.position.x, 43.5f, transform.position.z - 40);
+            distanceTraveled -= 40;
+
+        }else if (other.gameObject.CompareTag("wall"))
+        {
+            rBody.AddForce(new Vector3(0f, -5f, 0));
         }
 
     }
-
 
 
     void playerJump()
@@ -96,10 +136,7 @@ public class SimplePlayerMov : MonoBehaviour {
 
         const float JumpForce = 3.5f;
 
-        Vector3 rayOrigin = GetComponent<Collider>().bounds.center;
-
-        float rayDistance = GetComponent<Collider>().bounds.extents.y + 0.1f;
-        if (Physics.Raycast(rayOrigin, Vector3.down, rayDistance))
+        if (grounded)
         {
             rBody.AddForce(Vector3.up * JumpForce, ForceMode.VelocityChange);
         }
