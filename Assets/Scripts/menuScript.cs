@@ -33,6 +33,6 @@ public class menuScript : MonoBehaviour {
 	public void ExitGame(){
 		Application.Quit ();
 	}
+		
 }
 
-//why is life so precious and so cruel. Design by Selena Pearl Bobek

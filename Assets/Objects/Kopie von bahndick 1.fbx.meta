@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: 19c6880f909ef5146969f06e468a31ca
+timeCreated: 1481626347
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: auge rechts
+    100002: auge rechts.001
+    100004: augenlid rechts
+    100006: augenlid rechts.001
+    100008: body
+    100010: Empty
+    100012: //RootNode
+    100014: mund oben
+    100016: mund unten
+    100018: NurbsPath
+    100020: NurbsPath.001
+    100022: NurbsPath.002
+    100024: NurbsPath.003
+    100026: NurbsPath.004
+    100028: Plane.000
+    100030: Plane.001
+    100032: pupille rechts
+    100034: pupille rechts.001
+    100036: staceheln
+    400000: auge rechts
+    400002: auge rechts.001
+    400004: augenlid rechts
+    400006: augenlid rechts.001
+    400008: body
+    400010: Empty
+    400012: //RootNode
+    400014: mund oben
+    400016: mund unten
+    400018: NurbsPath
+    400020: NurbsPath.001
+    400022: NurbsPath.002
+    400024: NurbsPath.003
+    400026: NurbsPath.004
+    400028: Plane.000
+    400030: Plane.001
+    400032: pupille rechts
+    400034: pupille rechts.001
+    400036: staceheln
+    2300000: auge rechts
+    2300002: auge rechts.001
+    2300004: augenlid rechts
+    2300006: augenlid rechts.001
+    2300008: body
+    2300010: mund oben
+    2300012: mund unten
+    2300014: NurbsPath
+    2300016: NurbsPath.001
+    2300018: NurbsPath.002
+    2300020: NurbsPath.003
+    2300022: NurbsPath.004
+    2300024: Plane.000
+    2300026: Plane.001
+    2300028: pupille rechts
+    2300030: pupille rechts.001
+    2300032: staceheln
+    3300000: auge rechts
+    3300002: auge rechts.001
+    3300004: augenlid rechts
+    3300006: augenlid rechts.001
+    3300008: body
+    3300010: mund oben
+    3300012: mund unten
+    3300014: NurbsPath
+    3300016: NurbsPath.001
+    3300018: NurbsPath.002
+    3300020: NurbsPath.003
+    3300022: NurbsPath.004
+    3300024: Plane.000
+    3300026: Plane.001
+    3300028: pupille rechts
+    3300030: pupille rechts.001
+    3300032: staceheln
+    4300000: Plane.001
+    4300002: NurbsPath.004
+    4300004: NurbsPath.002
+    4300006: NurbsPath.003
+    4300008: NurbsPath
+    4300010: Plane.000
+    4300012: NurbsPath.001
+    4300014: auge rechts.001
+    4300016: auge rechts
+    4300018: augenlid rechts.001
+    4300020: augenlid rechts
+    4300022: body
+    4300024: mund oben
+    4300026: mund unten
+    4300028: pupille rechts.001
+    4300030: pupille rechts
+    4300032: staceheln
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
