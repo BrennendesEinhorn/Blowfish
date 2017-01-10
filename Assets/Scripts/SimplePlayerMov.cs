@@ -10,10 +10,10 @@ public class SimplePlayerMov : MonoBehaviour {
     private Rigidbody rBody;
 
     public float maxZAccelerationFractionPerSecond = 0.5f;
-    public float maxXAccelerationFractionPerSecond = 1.2f;
+    public float maxXAccelerationFractionPerSecond = 0.9f;
 
-    public float minSpeedZ = 15;
-    public float maxSpeedZ = 17;
+    public float minSpeedZ = 18;
+    public float maxSpeedZ = 18;
     public float maxZLimit = 30;
     public float minSpeedX = 0;
     public float pressTimeForMaxSpeedX = 1f;
@@ -77,10 +77,14 @@ public class SimplePlayerMov : MonoBehaviour {
         //float mag = new Vector2(rBody.velocity.x, rBody.velocity.z).magnitude; 
 
         //rBody.velocity = new Vector3(direction.x * mag, rBody.velocity.y, direction.z * mag)  ;
-
+         
         //rBody.transform.forward = new Vector3(direction.x, 0, direction.z);
 
-        distanceTraveled += rBody.velocity.z * Time.fixedDeltaTime;
+        if(rBody.velocity.z > 1 || rBody.velocity.z < 0)
+        {
+            distanceTraveled += (rBody.velocity.z - 0.1f) * Time.fixedDeltaTime;
+        }
+        Debug.Log("z velocity: " + rBody.velocity.z);
 
         Debug.Log("Distance: " + distanceTraveled);
          
