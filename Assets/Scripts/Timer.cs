@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using DG.Tweening;
 
 public class Timer : MonoBehaviour {
 
@@ -25,10 +26,14 @@ public class Timer : MonoBehaviour {
 			return;
 		
 		float t = Time.time - startTime;
-		string minutes = ((int)t / 60).ToString();
-		string seconds = (t % 60).ToString ("f2");
+		int minutes = (int)((int)(t / 60));
+		int seconds = (int)(t % 60);
+		int milliseconds = (int)((t - (int)t) * 60);
 
-		timerText.text = minutes + ":" + seconds;
+
+		//milliseconds = (milliseconds % 1000).ToString();
+
+		timerText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2") ;
 	}
 
 	public void Finnish () {
