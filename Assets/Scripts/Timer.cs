@@ -8,7 +8,11 @@ public class Timer : MonoBehaviour {
 	public Text timerText;
 	private float startTime;
 	private bool finnished = false;
-
+	private float endTime = 0f;
+	public float getEndTime()
+	{
+		return endTime;
+	}
 	void Start()
 	{
 		timerText.gameObject.SetActive (false);
@@ -22,7 +26,11 @@ public class Timer : MonoBehaviour {
 			
 	void Update () 
 	{
-		if (finnished)
+      
+
+
+
+        if (finnished)
 			return;
 		
 		float t = Time.time - startTime;
@@ -32,8 +40,9 @@ public class Timer : MonoBehaviour {
 
 
 		//milliseconds = (milliseconds % 1000).ToString();
-
-		timerText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2") ;
+		string text = minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2") ;
+		timerText.text = text;
+		endTime = t;
 	}
 
 	public void Finnish () {

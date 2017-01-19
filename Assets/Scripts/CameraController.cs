@@ -56,7 +56,7 @@ public class CameraController : MonoBehaviour {
 
         pathLength = tw.PathLength();
 
-        Debug.Log("pathlength" + tw.PathLength());
+        //Debug.Log("pathlength" + tw.PathLength());
 
       
 
@@ -111,7 +111,7 @@ public class CameraController : MonoBehaviour {
             }
         }
 
-        Debug.Log(closestIndex + " " + secondClosestIndex);
+        //Debug.Log(closestIndex + " " + secondClosestIndex);
 
         GameObject[] result = { gos[closestIndex], gos[secondClosestIndex] };
 
@@ -171,13 +171,13 @@ public class CameraController : MonoBehaviour {
         float percentagePath = GameManager.Instance.Player.distanceTraveled / pathLength;
 
 
-        Debug.Log("percentage: " + percentagePath);
+        //Debug.Log("percentage: " + percentagePath);
 
         Vector3 newPosition = tw.PathGetPoint(percentagePath);
 
         transform.position = newPosition;
 
-        Debug.Log("new Position: " + newPosition);
+        //Debug.Log("new Position: " + newPosition);
 
 
         //transform.position = player.transform.position + rotatedOffset;
@@ -199,7 +199,7 @@ public class CameraController : MonoBehaviour {
         {
            
 
-            Debug.Log("collision with camStop");
+            //Debug.Log("collision with camStop");
 
             StartCoroutine(EndTime());
         }

@@ -6,8 +6,8 @@ public class SimplePlayerMov : MonoBehaviour {
 
 
 
-
-    private Rigidbody rBody;
+    
+    public Rigidbody rBody;
 
     public float maxZAccelerationFractionPerSecond = 0.5f;
     public float maxXAccelerationFractionPerSecond = 0.9f;
@@ -52,11 +52,12 @@ public class SimplePlayerMov : MonoBehaviour {
         if (inX != 0)
         {
             float moveXRaw = Mathf.Sign(inX) * maxSpeedX * Time.deltaTime * maxXAccelerationFractionPerSecond + rBody.velocity.x ;
+            
             float moveX = Mathf.Clamp(moveXRaw, -maxSpeedX, maxSpeedX);
 
             rBody.velocity = new Vector3( moveX , rBody.velocity.y, rBody.velocity.z);
         }
-
+        
         if (rBody.velocity.z < maxSpeedZ)
         {
             rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y, rBody.velocity.z + maxSpeedZ * Time.deltaTime * maxZAccelerationFractionPerSecond);
@@ -84,9 +85,9 @@ public class SimplePlayerMov : MonoBehaviour {
         {
             distanceTraveled += (rBody.velocity.z - 0.1f) * Time.fixedDeltaTime;
         }
-        Debug.Log("z velocity: " + rBody.velocity.z);
+        //Debug.Log("z velocity: " + rBody.velocity.z);
 
-        Debug.Log("Distance: " + distanceTraveled);
+        //Debug.Log("Distance: " + distanceTraveled);
          
         Vector3 rayOrigin = GetComponent<Collider>().bounds.center;
 
@@ -155,8 +156,11 @@ public class SimplePlayerMov : MonoBehaviour {
     }
 
 
+
+
     // Update is called once per frame
     void Update () {
 	
 	}
+
 }
