@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour {
 			Application.Quit ();
 		} if (isStart) {
 			Application.LoadLevel (1);
-			renderer.material.color = Color.cyan;
+			GetComponent<Renderer>().material.color = Color.cyan;
 		}
 	
 	}
