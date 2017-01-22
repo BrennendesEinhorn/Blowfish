@@ -23,20 +23,45 @@ public class SimplePlayerMov : MonoBehaviour {
     public float speedUp = 2;
     public float slowDown = 1;
 
-    public Vector3 direction = new Vector3();
 
-    public float distanceTraveled = 0f;
+	//TODO starting direction must equal directionOld, in this case (0,0,1)
+	public Vector3 directionOld;
+    public Vector3 direction;
+	public bool changedDir = true;
+
+    public float distanceTraveled;
 
 
     private bool grounded = true;
 
 
+	/*doesnt work at some point
+	 * private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
+	{
+		Vector2 difference = vec2 - vec1;
+		float sign = (vec2.y < vec1.y)? -1.0f : 1.0f;
+		float value = Vector2.Angle (vec2, vec1) * sign;
+		Debug.Log ("calculated AngleBetween Vector2:" + value);
+		return value;
 
+	}*/
+		
+	private float AngleBetweenVector2Second(Vector2 vec1, Vector2 vec2)
+	{
+		float value = Mathf.DeltaAngle(Mathf.Atan2(vec1.y, vec1.x) * Mathf.Rad2Deg,
+			Mathf.Atan2(vec2.y, vec2.x) * Mathf.Rad2Deg);
+		Debug.Log ("calculated AngleBetween Vector2:" + value);
+
+		return value;
+	}
 
 
     // Use this for initialization
     void Start () {
         rBody = GetComponent<Rigidbody>();
+		direction = new Vector3(0,0,1);
+		directionOld = new Vector3 (0, 0, 1);
+		distanceTraveled = 0.01f;
 
     }
 
@@ -44,25 +69,55 @@ public class SimplePlayerMov : MonoBehaviour {
 
     void FixedUpdate()
     {
+		Vector2 zDir = new Vector2 (0, 1);
+		Vector2 viewDir = new Vector2 (direction.x, direction.z);
 
-        
+		float angle = AngleBetweenVector2Second (viewDir, zDir);
+
+		Vector3 rotVel = Quaternion.Euler (0, -angle, 0) * rBody.velocity;
+
+		float leftRightVel = rotVel.x;
+
+
         
 
         float inX = Input.GetAxis("Horizontal");
         if (inX != 0)
         {
-            float moveXRaw = Mathf.Sign(inX) * maxSpeedX * Time.deltaTime * maxXAccelerationFractionPerSecond + rBody.velocity.x ;
+			float moveXRaw = Mathf.Sign(inX) * maxSpeedX * Time.deltaTime * maxXAccelerationFractionPerSecond + leftRightVel ;
             float moveX = Mathf.Clamp(moveXRaw, -maxSpeedX, maxSpeedX);
 
-            rBody.velocity = new Vector3( moveX , rBody.velocity.y, rBody.velocity.z);
+			Vector3 newVelRot = new Vector3 (moveX, rotVel.y, rotVel.z);
+			Vector3 newVel = Quaternion.Euler (0, angle, 0) * newVelRot;
+
+
+			rBody.velocity = newVel;
         }
 
-        if (rBody.velocity.z < maxSpeedZ)
+		/*float inX = Input.GetAxis("Horizontal");
+		if (inX != 0)
+		{
+			float moveXRaw = Mathf.Sign(inX) * maxSpeedX * Time.deltaTime * maxXAccelerationFractionPerSecond + rBody.velocity.x ;
+			float moveX = Mathf.Clamp(moveXRaw, -maxSpeedX, maxSpeedX);
+
+			rBody.velocity = new Vector3( moveX , rBody.velocity.y, rBody.velocity.z);
+		}*/
+
+
+
+
+        if (rotVel.z < maxSpeedZ)
         {
-            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y, rBody.velocity.z + maxSpeedZ * Time.deltaTime * maxZAccelerationFractionPerSecond);
+
+			Vector3 rotVelforZ = Quaternion.Euler (0, -angle, 0) * rBody.velocity;
+
+			Vector3 newVelRot = new Vector3(rotVelforZ.x, rotVelforZ.y, rotVelforZ.z + maxSpeedZ * Time.deltaTime * maxZAccelerationFractionPerSecond);
+			Vector3 newVel = Quaternion.Euler (0, angle, 0) * newVelRot;
+
+
+			rBody.velocity = newVel;
         }
 
-        
 
         if(!grounded)
         {
@@ -74,20 +129,42 @@ public class SimplePlayerMov : MonoBehaviour {
             playerJump();
         }
 
-        //float mag = new Vector2(rBody.velocity.x, rBody.velocity.z).magnitude; 
+
+		//transform velocity to new viewDir
+		if (changedDir == true) 
+		{
+			float angleDirs = AngleBetweenVector2Second(new Vector2(direction.x, direction.z),new Vector2 (directionOld.x, directionOld.z));
+			Debug.Log("direction: " + direction);
+			Debug.Log("directionOld: " + directionOld);
+
+			Debug.Log("angleDirs: " + angleDirs);
+
+			
+			rBody.velocity = Quaternion.Euler (0, angleDirs, 0) * rBody.velocity;
+
+			changedDir = false;
+		
+		}
+
+		//float mag = new Vector2(rBody.velocity.x, rBody.velocity.z).magnitude; 
 
         //rBody.velocity = new Vector3(direction.x * mag, rBody.velocity.y, direction.z * mag)  ;
          
         //rBody.transform.forward = new Vector3(direction.x, 0, direction.z);
+		Vector3 rotVelforDistance = Quaternion.Euler (0, -angle, 0) * rBody.velocity;
 
-        if(rBody.velocity.z > 1 || rBody.velocity.z < 0)
+		if(rotVelforDistance.z > 1 || rotVelforDistance.z < 0)
         {
-            distanceTraveled += (rBody.velocity.z - 0.1f) * Time.fixedDeltaTime;
+			distanceTraveled += (rotVelforDistance.z - 0.1f) * Time.fixedDeltaTime;
         }
+
         Debug.Log("z velocity: " + rBody.velocity.z);
 
         Debug.Log("Distance: " + distanceTraveled);
          
+
+
+		//test if player is still on ground
         Vector3 rayOrigin = GetComponent<Collider>().bounds.center;
 
         float rayDistance = GetComponent<Collider>().bounds.extents.y + 0.1f;
@@ -143,6 +220,7 @@ public class SimplePlayerMov : MonoBehaviour {
         if (grounded)
         {
             rBody.AddForce(Vector3.up * JumpForce, ForceMode.VelocityChange);
+
         }
     }
 
