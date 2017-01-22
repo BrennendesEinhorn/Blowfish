@@ -7330,7 +7330,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Finish!
+  m_Text: You saved my Life!
 --- !u!222 &2091732822
 CanvasRenderer:
   m_ObjectHideFlags: 0
