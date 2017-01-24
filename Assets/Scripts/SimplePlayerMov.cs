@@ -162,7 +162,7 @@ public class SimplePlayerMov : MonoBehaviour {
 
 		if(rotVelforDistance.z > 1 || rotVelforDistance.z < 0)
         {
-			distanceTraveled += (rotVelforDistance.z-0.08f) * Time.fixedDeltaTime;
+			distanceTraveled += (rotVelforDistance.z-0.03f) * Time.fixedDeltaTime;
         }
 
         Debug.Log("z velocity: " + rBody.velocity.z);
