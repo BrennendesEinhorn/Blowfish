@@ -20,14 +20,16 @@ public class CameraPlaytest : MonoBehaviour {
 	public Transform target;
 	private Vector3[] waypoints = new[] {
 		new Vector3(252f, 45.69f, -1.68f),
-		new Vector3(253.43f, 45.69f, 46.69f),
-		new Vector3(264.13f, 45.69f, 90.49f),
-		new Vector3(343.1f, 45.69f, 238.2f),
-		new Vector3(345.4f, 45.69f, 276.2f),
-		new Vector3(256.6f, 45.69f, 411f),
+		new Vector3(263.43f, 45.69f, 88.7f),
+		new Vector3(335f, 45.69f, 211f),
+		new Vector3(336.1f, 45.69f, 292f),
+
+		new Vector3(305.4f, 39.69f, 339.2f),
+
+		new Vector3(266.6f, 45.69f, 398f),
 		new Vector3(250.25f, 45.69f, 482.3f),
 		new Vector3(249f, 45.69f, 627.8f),
-		new Vector3(247.5f, 45.69f, 787.45f)
+		new Vector3(247.5f, 45.69f, 778.45f)
 		/*,
 		new Vector3(f, -5.2f, f),
 		new Vector3(f, -5.2f, f),
@@ -244,7 +246,7 @@ public class CameraPlaytest : MonoBehaviour {
 
 	IEnumerator EndTime()
 	{
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(10);
 
 		SceneManager.LoadScene(0);
 

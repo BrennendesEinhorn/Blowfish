@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SimplePlayerMov : MonoBehaviour {
 
 
 
+	public SoundScript3 sound;
 
-
-    private Rigidbody rBody;
+	public Animator anim;
+    public Rigidbody rBody;
 
     public float maxZAccelerationFractionPerSecond = 0.5f;
     public float maxXAccelerationFractionPerSecond = 0.9f;
@@ -51,7 +53,6 @@ public class SimplePlayerMov : MonoBehaviour {
 		float value = Mathf.DeltaAngle(Mathf.Atan2(vec1.y, vec1.x) * Mathf.Rad2Deg,
 			Mathf.Atan2(vec2.y, vec2.x) * Mathf.Rad2Deg);
 		Debug.Log ("calculated AngleBetween Vector2:" + value);
-
 		return value;
 	}
 
@@ -62,6 +63,8 @@ public class SimplePlayerMov : MonoBehaviour {
 		direction = new Vector3(0,0,1);
 		directionOld = new Vector3 (0, 0, 1);
 		distanceTraveled = 0.01f;
+		anim = GetComponent<Animator> ();
+		anim.speed = 2.0f;
 
     }
 
@@ -130,6 +133,10 @@ public class SimplePlayerMov : MonoBehaviour {
         }
 
 
+		if (Input.GetButton ("reset")) {
+			SceneManager.LoadScene(1);
+		}
+
 		//transform velocity to new viewDir
 		if (changedDir == true) 
 		{
@@ -155,7 +162,7 @@ public class SimplePlayerMov : MonoBehaviour {
 
 		if(rotVelforDistance.z > 1 || rotVelforDistance.z < 0)
         {
-			distanceTraveled += (rotVelforDistance.z - 0.1f) * Time.fixedDeltaTime;
+			distanceTraveled += (rotVelforDistance.z-0.08f) * Time.fixedDeltaTime;
         }
 
         Debug.Log("z velocity: " + rBody.velocity.z);
@@ -186,20 +193,32 @@ public class SimplePlayerMov : MonoBehaviour {
         if (other.gameObject.CompareTag("SpeedUp"))
         {
             other.gameObject.SetActive(false);
+			GameManager.Instance.Sound.PlayWasserblasenSound ();
             if(maxSpeedZ <= maxZLimit)
             {
                 maxSpeedZ += speedUp;
             }
-        } else if (other.gameObject.CompareTag("SlowDown"))
+        } else if (other.gameObject.CompareTag("Gras"))
         {
             if (maxSpeedZ > minSpeedZ)
             {
                 maxSpeedZ -= slowDown; 
             }
-            other.gameObject.SetActive(false);
-            rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y, -5);
+            //other.gameObject.SetActive(false);
+			GameManager.Instance.Sound.PlayGrasSound ();
+			rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y, Mathf.Clamp(rBody.velocity.z-15,0,rBody.velocity.z));
 
-        } else if (other.gameObject.CompareTag("grube"))
+		}else if (other.gameObject.CompareTag("Bump"))
+		{
+			if (maxSpeedZ > minSpeedZ)
+			{
+				maxSpeedZ -= slowDown; 
+			}
+			other.gameObject.SetActive(false);
+			GameManager.Instance.Sound.PlayStoßSound ();
+			rBody.velocity = new Vector3(rBody.velocity.x, rBody.velocity.y, -5);
+
+		} else if (other.gameObject.CompareTag("grube"))
         {
             transform.position = new Vector3(other.transform.position.x, 43.5f, transform.position.z - 40);
             distanceTraveled -= 40;
@@ -220,7 +239,8 @@ public class SimplePlayerMov : MonoBehaviour {
         if (grounded)
         {
             rBody.AddForce(Vector3.up * JumpForce, ForceMode.VelocityChange);
-
+			GameManager.Instance.Sound.PlayJumpSound ();
+			anim.SetTrigger("test");
         }
     }
 
