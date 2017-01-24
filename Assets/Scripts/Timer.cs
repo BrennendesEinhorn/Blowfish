@@ -9,6 +9,16 @@ public class Timer : MonoBehaviour {
 	private float startTime;
 	private bool finnished = false;
 	private float endTime = 0f;
+    string text;
+
+    public float TotalTime
+    {
+        get
+        {
+            return Time.time - startTime;
+        }
+    }
+
 	public float getEndTime()
 	{
 		return endTime;
@@ -26,10 +36,7 @@ public class Timer : MonoBehaviour {
 			
 	void Update () 
 	{
-      
-
-
-
+     
         if (finnished)
 			return;
 		
@@ -40,14 +47,19 @@ public class Timer : MonoBehaviour {
 
 
 		//milliseconds = (milliseconds % 1000).ToString();
-		string text = minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2") ;
+		 text = minutes.ToString("D2") + ":" + seconds.ToString("D2") + ":" + milliseconds.ToString("D2") ;
 		timerText.text = text;
-		endTime = t;
+        endTime = t;
 	}
+
+    public string getHighscoreTime()
+    {
+        return text;
+    }
 
 	public void Finnish () {
 
 		finnished = true;
-		timerText.color = Color.red; 
+		timerText.color = Color.red;
 	}
 }
