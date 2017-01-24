@@ -4,14 +4,15 @@ timeCreated: 1481024916
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
-  fontSize: 16
-  forceTextureCase: -2
+  fontSize: 90
+  forceTextureCase: 0
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
   - Amatic SC
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 05f5f55d8c1c49142aecb65cb8698ec6, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

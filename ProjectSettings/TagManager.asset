@@ -7,6 +7,10 @@ TagManager:
   - SlowDown
   - SpeedUp
   - CameraDirection
+  - gameEnd
+  - grube
+  - finish
+  - wall
   layers:
   - Default
   - TransparentFX
