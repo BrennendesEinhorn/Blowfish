@@ -175,6 +175,7 @@ public class Finish : MonoBehaviour
 
 		timer.Finnish ();	
 		FinishText.gameObject.SetActive (true);
+		GameManager.Instance.Sound.PlayGameFinishSound ();
 		//score = timer.getEndTime ();
 
 	}

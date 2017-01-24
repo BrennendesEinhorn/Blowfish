@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
 
     public SimplePlayerMov Player;
 
+	public SoundScript3 Sound;
+
 
 	// Use this for initialization
 	void Start () {
