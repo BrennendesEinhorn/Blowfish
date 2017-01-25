@@ -176,21 +176,23 @@ public class Finish : MonoBehaviour
 
 		timer.Finnish ();	
 		FinishText.gameObject.SetActive (true);
-        HighscoreText.gameObject.SetActive(true);
         GameManager.Instance.Sound.PlayGameFinishSound ();
 		//score = timer.getEndTime ();
-        StoreHighscore(Mathf.RoundToInt(timer.TotalTime));
+		StoreHighscore(timer.TotalTime);
+		HighscoreText.gameObject.SetActive(true);
+
     }
 
-    void StoreHighscore(int newHighscore)
+    void StoreHighscore(float newHighscore)
     {
-        int oldHighscore = PlayerPrefs.GetInt("highscore", 5000);
+        float oldHighscore = PlayerPrefs.GetFloat("highscore", 5000);
         print(oldHighscore + "    " + newHighscore);
-        if (Time.time < oldHighscore)
-        {
-            PlayerPrefs.SetInt("highscore", newHighscore);
-            HighscoreText.text = timer.getEndTime().ToString();
-        }
+		if (newHighscore < oldHighscore) {
+			PlayerPrefs.SetFloat ("highscore", newHighscore);
+			HighscoreText.text = "New Highscore: " + newHighscore;
+		} else {
+			HighscoreText.text = "Current Highscore: " + oldHighscore.ToString ();
+		}
     }
 
 		

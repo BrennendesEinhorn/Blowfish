@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour {
 
 	public SoundScript3 Sound;
 
+	public Finish finish;
+
 
 	// Use this for initialization
 	void Start () {

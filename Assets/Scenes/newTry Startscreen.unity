@@ -1795,7 +1795,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Help! \nI need to get back into the water. \nYou can navigate by using
-    the arrow keys. I can jump if you hit space.\nCollect beautiful bubbles and avoid
+    A and D keys. I can jump if you hit space.\nCollect beautiful bubbles and avoid
     gras, stones and the evil crabs.\nTry to be faster each time!"
 --- !u!222 &1617605213
 CanvasRenderer:
