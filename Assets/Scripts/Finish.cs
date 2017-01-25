@@ -123,7 +123,7 @@ public class Finish : MonoBehaviour
 	private string score;
 	private ScoreBoard scoreBoard = null;
 	public string ScoreFileName;
-
+    public Text HighscoreText;
 	private ScoreBoard ReadScores()
 	{
 		XmlSerializer serializer = new XmlSerializer(typeof(ScoreBoard));
@@ -169,14 +169,32 @@ public class Finish : MonoBehaviour
 	{
 		FinishText.gameObject.SetActive (false);
 		timer = FindObjectOfType<Timer> ();
-	}
+        HighscoreText.gameObject.SetActive(false);
+    }
 
 	private void OnTriggerEnter(Collider other) {
 
 		timer.Finnish ();	
 		FinishText.gameObject.SetActive (true);
-		GameManager.Instance.Sound.PlayGameFinishSound ();
+        HighscoreText.gameObject.SetActive(true);
+        GameManager.Instance.Sound.PlayGameFinishSound ();
 		//score = timer.getEndTime ();
+        StoreHighscore(Mathf.RoundToInt(timer.TotalTime));
+    }
 
-	}
+    void StoreHighscore(int newHighscore)
+    {
+        int oldHighscore = PlayerPrefs.GetInt("highscore", 5000);
+        print(oldHighscore + "    " + newHighscore);
+        if (Time.time < oldHighscore)
+        {
+            PlayerPrefs.SetInt("highscore", newHighscore);
+            HighscoreText.text = timer.getEndTime().ToString();
+        }
+    }
+
+		
+
 }
+
+
