@@ -177,7 +177,8 @@ public class Finish : MonoBehaviour
 		timer.Finnish ();	
 		FinishText.gameObject.SetActive (true);
         HighscoreText.gameObject.SetActive(true);
-        
+        GameManager.Instance.Sound.PlayGameFinishSound ();
+		//score = timer.getEndTime ();
         StoreHighscore(Mathf.RoundToInt(timer.TotalTime));
     }
 
@@ -192,6 +193,7 @@ public class Finish : MonoBehaviour
         }
     }
 
+		
 
 }
 
