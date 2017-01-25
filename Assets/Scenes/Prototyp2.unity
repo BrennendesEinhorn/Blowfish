@@ -198,7 +198,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011925675594, guid: 1cd6e6c1123391846b081abb52bd32a6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.9424343
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000011925675594, guid: 1cd6e6c1123391846b081abb52bd32a6, type: 2}
       propertyPath: m_LocalPosition.y
@@ -206,7 +206,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011925675594, guid: 1cd6e6c1123391846b081abb52bd32a6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2.73
+      value: 5.67
       objectReference: {fileID: 0}
     - target: {fileID: 4000011925675594, guid: 1cd6e6c1123391846b081abb52bd32a6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -297,7 +297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &630781086
 Transform:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 803701722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.67, y: -5.673, z: 72.61}
+  m_LocalPosition: {x: 20.43, y: -5.47, z: 131.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -562,10 +562,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1542427576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b0aef324493db54cab102cfc9ed9dca, type: 3}
+  m_Script: {fileID: 11500000, guid: ecd4180683646be40b22f65974a51b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 9966112}
+  target: {fileID: 2089184533}
+--- !u!4 &1542427583 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000010265770990, guid: 81f1a0f99f12d624595cc21691a50550,
+    type: 2}
+  m_PrefabInternal: {fileID: 1884091282}
 --- !u!54 &1542427584
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -645,7 +650,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010265770990, guid: 81f1a0f99f12d624595cc21691a50550, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.919
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000010265770990, guid: 81f1a0f99f12d624595cc21691a50550, type: 2}
       propertyPath: m_LocalPosition.y
@@ -812,3 +817,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &2089184532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2089184533}
+  m_Layer: 0
+  m_Name: "Platzhalter f\xFCr Tween"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2089184533
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089184532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1542427583}
+  m_RootOrder: 0

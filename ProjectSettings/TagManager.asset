@@ -11,6 +11,9 @@ TagManager:
   - grube
   - finish
   - wall
+  - Gras
+  - Bump
+  - BumpSound
   layers:
   - Default
   - TransparentFX
